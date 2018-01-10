@@ -1,0 +1,78 @@
+#include "stdafx.h"
+#include "conio.h"
+#include <iostream>
+#define MAX 100
+
+using namespace std;
+void cargarVector (int vec[], int n);
+void mostrarVector (int vec[], int n);
+void interseccion (int vecA[],int vecB[],int nA,int nB);
+bool existe (int vecB [],int nB,int x);
+
+void main()
+{
+	int vecA[MAX], vecB[MAX], nA, nB;
+	cout<<"Dimension del vector A: ";
+	cin>>nA;
+	cargarVector (vecA,nA);
+	mostrarVector (vecA,nA);
+	cout<<"Dimension del vector B: ";
+	cin>>nB;
+	cargarVector (vecB,nB);
+	mostrarVector (vecB,nB);
+	interseccion (vecA,vecB,nA,nB);
+}
+
+void cargarVector (int vec[], int n)
+{
+	int i=0;
+	while (i<n)
+	{
+		cout<<"Vec["<<i<<"]= ";
+		cin>>vec[i];
+		i++;
+	}
+	cout<<endl;
+}
+
+void mostrarVector (int vec[], int n)
+{
+	int i=0;
+	while (i<n)
+	{
+		cout<<vec[i]<<"\t";
+		i++;
+	}
+	cout<<endl;
+}
+
+void interseccion (int vecA[],int vecB[],int nA,int nB)
+{
+	int i=0,vecC[MAX],j=0,x;
+	while (i<nA)
+	{
+		x=vecA[i];
+		if (existe (vecB,nB,x))
+		{
+			vecC[j]=x;
+			j++;
+		}
+		i++;
+			
+	}
+	cout<<endl<<"Interseccion de ambos vectores: "<<endl;
+	mostrarVector(vecC,j);
+	getch();
+}
+
+bool existe (int vecB [],int nB,int x)
+{
+	int i=0;
+	while (i<nB)
+	{
+		if (x==vecB[i])
+			return true;
+		i++;
+	}
+	return false;
+}
