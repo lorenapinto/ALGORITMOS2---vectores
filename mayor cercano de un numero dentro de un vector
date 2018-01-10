@@ -1,0 +1,76 @@
+
+#include "stdafx.h"
+#include "iostream"
+#include "conio.h"
+
+using namespace std;
+
+void cargar(int v[], int n);
+void mostrar(int v[], int n);
+void mayorCercano (int v[], int n, int x);
+int encontrarCercano (int aux[],int n);
+
+void main ()
+{
+	int n,x;
+	int v[50];
+	cout<<"Dimension del vector: ";
+	cin>>n;
+	cargar(v,n);
+	cout<<endl;
+	mostrar(v,n);
+	cout<<endl;
+	cout<<"Elija el numero del que quiera encontrar el mayor cercano: ";
+	cin>>x;
+	mayorCercano (v,n,x);
+	getch();
+}
+
+void cargar(int v[], int n)
+{
+ int x; 
+ for(int i=0;i<n;i++)
+ {
+	 cout<<"Elemento:";
+	 cin>>x;
+	 v[i]=x;
+ }
+}
+
+void mostrar(int v[], int n)
+{
+ for(int i=0;i<n;i++)
+	 cout<<v[i];
+
+ cout<<endl;
+}
+
+void mayorCercano (int v[], int n, int x)
+{
+	int i=0, aux[50], j=0;
+	while (i<n)
+	{
+		if (v[i]>x)
+		{
+			aux[j]=v[i];
+			j++;
+		}
+		i++;
+	}
+	encontrarCercano (aux,j+1);
+	cout<<"El mayor cercano es: "<<menor;
+	getch();
+}
+
+int encontrarCercano (int aux[],int n)
+{
+	int i=1, menor;
+	menor=aux[0];
+	while (i<n)
+	{
+		if (aux[i]< menor)
+			menor=aux[i];
+		i++;
+	}
+	return (menor);
+}
