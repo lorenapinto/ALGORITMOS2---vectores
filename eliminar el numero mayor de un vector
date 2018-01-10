@@ -1,0 +1,82 @@
+
+#include "stdafx.h"
+#include "conio.h"
+#include <iostream>
+#define MAX 100
+
+using namespace std;
+void cargarVector (int vec[], int n);
+void mostrarVector (int vec[], int n);
+void mayorElemento (int vec[], int n);
+void eliminarElemento (int vec[],int n,int pos);
+
+void main()
+{
+	int vec[MAX], n;
+	cout<<"Dimension del vector: ";
+	cin>>n;
+	cargarVector (vec,n);
+	mostrarVector (vec,n);
+	mayorElemento (vec,n);
+	
+}
+
+void cargarVector (int vec[], int n)
+{
+	int i=0;
+	while (i<n)
+	{
+		cout<<"Vec["<<i<<"]= ";
+		cin>>vec[i];
+		i++;
+	}
+	cout<<endl;
+}
+
+void mostrarVector (int vec[], int n)
+{
+	int i=0;
+	while (i<n)
+	{
+		cout<<vec[i]<<"\t";
+		i++;
+	}
+	cout<<endl;
+}
+
+void mayorElemento (int vec[], int n)
+{
+	int i=0,mayor,pos;
+	mayor=vec[0];
+	pos=i;
+	while (i<n)
+	{
+		if (vec[i]> mayor)
+		{
+			mayor=vec[i];
+			pos=i;
+		}
+		i++;
+	}
+	eliminarElemento (vec,n,pos);
+}
+
+void eliminarElemento (int vec[],int n,int pos)
+{
+	if (pos!= (n-1))
+	{
+		while (pos<n-1)
+		{
+			vec[pos]=vec[pos+1];
+			pos++;
+		}
+		n=n-1;
+	}
+	else
+	{
+		n=n-1;
+	}
+	 cout<<"Vector final: "<<endl;
+	mostrarVector (vec,n);
+	getch();
+}
