@@ -1,0 +1,57 @@
+#include "stdafx.h"
+#include "conio.h"
+#include <iostream>
+#define MAX 100
+
+using namespace std;
+void cargarVector (int vec[], int n);
+void mostrarVector (int vec[], int n);
+void invertirVector (int vec[], int n);
+
+void main()
+{
+	int vec[MAX], n;
+	cout<<"Dimension del vector: ";
+	cin>>n;
+	cargarVector (vec,n);
+	mostrarVector (vec,n);
+	invertirVector (vec,n);
+}
+
+void cargarVector (int vec[], int n)
+{
+	int i=0;
+	while (i<n)
+	{
+		cout<<"Vec["<<i<<"]= ";
+		cin>>vec[i];
+		i++;
+	}
+}
+
+void mostrarVector (int vec[], int n)
+{
+	int i=0;
+	while (i<n)
+	{
+		cout<<vec[i]<<"\t";
+		i++;
+	}
+}
+
+void invertirVector (int vec[], int n)
+{
+	int i=0, j, aux;
+	j=n-1;
+	while (i<j) // i aumenta mientras j disminuye, cuando sean iguales se sale
+	{
+		aux=vec[i];
+		vec[i]=vec[j];
+		vec[j]=aux;
+		i++;
+		j--;
+	}
+	cout<<endl<<"Vector invertido: ";
+	mostrarVector(vec,n);
+	getch();
+}
