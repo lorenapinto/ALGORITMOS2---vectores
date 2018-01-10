@@ -1,0 +1,79 @@
+#include "stdafx.h"
+#include "conio.h"
+#include <iostream>
+#define MAX 100
+
+using namespace std;
+void cargarVector (int vec[], int n);
+void mostrarVector (int vec[], int n);
+void repetido (int vec[], int n);
+int eliminarElemento (int vec[],int &n,int j);
+
+void main()
+{
+	int vec[MAX], n;
+	cout<<"Dimension del vector: ";
+	cin>>n;
+	cargarVector (vec,n);
+	mostrarVector (vec,n);
+	repetido (vec,n);
+	
+}
+
+void cargarVector (int vec[], int n)
+{
+	int i=0;
+	while (i<n)
+	{
+		cout<<"Vec["<<i<<"]= ";
+		cin>>vec[i];
+		i++;
+	}
+	cout<<endl;
+}
+
+void mostrarVector (int vec[], int n)
+{
+	int i=0;
+	while (i<n)
+	{
+		cout<<vec[i]<<"\t";
+		i++;
+	}
+	cout<<endl;
+}
+
+void repetido (int vec[], int n)
+{
+	int i=0, j;
+	while (i<n)
+	{
+		j=i+1;
+		while (j<n)
+		{
+			if (vec[i]==vec[j])
+			{
+				eliminarElemento (vec,n,j);
+			}
+			else
+			{
+				j++;
+			}
+		}
+		i++;
+	}
+	cout<<endl<<"Vector sin repetidos: "<<endl;
+	mostrarVector (vec,n);
+	getch();
+}
+
+int eliminarElemento (int vec[],int &n,int j)
+{
+	while (j<n-1)
+	{
+		vec[j]=vec[j+1];
+		j++;
+	}
+	n=n-1;
+	return (vec,n);
+}
