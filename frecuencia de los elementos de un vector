@@ -1,0 +1,93 @@
+#include "stdafx.h"
+#include "conio.h"
+#include <iostream>
+#define MAX 100
+
+using namespace std;
+void cargarVector (int vec[], int n);
+void mostrarVector (int vec[], int n);
+void buscar (int vec[], int n);
+void repetido (int vec[],int n,int a); 
+bool encontrar (int a,int aux[],int j);
+
+void main()
+{
+	int vec[MAX], n;
+	cout<<"Dimension del vector: ";
+	cin>>n;
+	cargarVector (vec,n);
+	mostrarVector (vec,n);
+    buscar (vec,n);
+	
+}
+
+void cargarVector (int vec[], int n)
+{
+	int i=0;
+	while (i<n)
+	{
+		cout<<"Vec["<<i<<"]= ";
+		cin>>vec[i];
+		i++;
+	}
+	cout<<endl;
+}
+
+void mostrarVector (int vec[], int n)
+{
+	int i=0;
+	while (i<n)
+	{
+		cout<<vec[i]<<"\t";
+		i++;
+	}
+	cout<<endl;
+}
+
+void buscar (int vec[], int n)
+{
+	int i=0,aux[MAX],j=0;
+	repetido (vec,n,vec[i]);
+	aux[j]=vec[i];
+	j++;
+	i++;
+	while (i<n)
+	{
+		if (encontrar (vec[i],aux,j))
+		{
+			i++;
+		}
+		else
+		{
+			repetido (vec,n,vec[i]);
+			aux[j]=vec[i];
+			j++;
+			i++;
+		}
+	}
+}
+
+void repetido (int vec[],int n,int a)
+{
+	int i=0,cont=0;
+	while (i<n)
+	{
+		if (a==vec[i])
+			cont++;
+		i++;
+	}
+	cout<<endl<<"El numero "<<a<<" se repite "<<cont<<" veces.";
+	getch();
+}
+bool encontrar (int a,int aux[],int j)
+{
+	int i=0;
+	while (i<j)
+	{
+		if (a==aux[i])
+			return true;
+		else
+			i++;
+	}
+	return false;
+}
