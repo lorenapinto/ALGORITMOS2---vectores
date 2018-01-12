@@ -1,0 +1,59 @@
+#include "stdafx.h"
+#include "conio.h"
+#include <iostream>
+#define MAX 100
+
+using namespace std;
+void cargarVector (int vec[], int n);
+void mostrarVector (int vec[], int n);
+void ordenado (int vec[],int n);
+
+void main()
+{
+	int vec[MAX], n;
+	cout<<"Dimension del Vector: ";
+	cin>>n;
+	cargarVector (vec,n);
+	mostrarVector (vec,n);
+	cout<<endl<<"El vector ordenado al reves es: "<<endl;
+	ordenado (vec,n);
+	getch();	
+}
+
+void cargarVector (int vec[], int n)
+{
+	int i=0;
+	while (i<n)
+	{
+		cout<<"Vec["<<i<<"]= ";
+		cin>>vec[i];
+		i++;
+	}
+	cout<<endl;
+}
+
+void mostrarVector (int vec[], int n)
+{
+	int i=0;
+	while (i<n)
+	{
+		cout<<vec[i]<<"\t";
+		i++;
+	}
+	cout<<endl;
+}
+
+void ordenado (int vec[],int n)
+{
+	int i=0,aux[MAX],j;
+	j=n-1;
+	while (i<n)
+	{
+		aux[j]=vec[i];
+		i++;
+		j--;
+	}
+	cout<<endl;
+	mostrarVector (aux,n);
+	getch();
+}
