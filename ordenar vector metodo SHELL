@@ -1,0 +1,72 @@
+#include "stdafx.h"
+#include "conio.h"
+#include <iostream>
+#define MAX 100
+
+using namespace std;
+
+void cargarVector (int a[], int n);
+void mostrarVector (int a[], int n);
+void ordenarShellSort (int a[], int n);
+
+void main()
+{
+	int a[MAX], n;
+	cout<<"Dimension del vector: ";
+	cin>>n;
+	cargarVector (a,n);
+	cout<<endl;
+	mostrarVector (a,n);
+	cout<<endl;
+	ordenarShellSort (a,n);
+	cout<<endl;
+	mostrarVector (a,n);
+	getch();
+}
+
+void cargarVector (int a[], int n)
+{
+	int i=0;
+	while (i<n)
+	{
+		cout<<"a["<<i<<"]= ";
+		cin>>a[i];
+		i++;
+	}
+}
+
+void mostrarVector (int a[], int n)
+{
+	int i=0;
+	while (i<n)
+	{
+		cout<<a[i]<<"\t";
+		i++;
+	}
+}
+
+void ordenarShellSort(int A[],int n)
+{
+     
+  int i, j, inc, temp;
+  
+  for(inc = 1 ; inc<n;inc=inc*3+1);
+   
+      while (inc > 0)
+      {
+          for (i=inc; i < n; i++)
+          {
+                j = i;
+                temp = A[i];
+                while ((j >= inc) && (A[j-inc] > temp))
+                {
+                    A[j] = A[j - inc];
+                    j = j - inc;
+                }
+       
+                A[j] = temp;
+          }
+         
+          inc/= 2;
+      }
+}
