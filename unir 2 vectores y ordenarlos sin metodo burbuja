@@ -1,0 +1,101 @@
+#include "stdafx.h"
+#include "conio.h"
+#include <iostream>
+#define MAX 100
+
+using namespace std;
+void cargarVector (int vec[], int n);
+void mostrarVector (int vec[], int n);
+void unirVectores (int A[], int B[], int nA, int nB);
+
+
+
+void main()
+{
+	int nA,A[MAX],nB,B[MAX];
+
+	cout<<"Dimension vector A: ";
+	cin>>nA;
+	cargarVector(A,nA);
+	cout<<endl;
+	mostrarVector(A,nA);
+
+	cout<<endl<<"Dimension vector B: ";
+	cin>>nB;
+	cargarVector(B,nB);
+	cout<<endl;
+	mostrarVector(B,nB);
+	unirVectores (A,B,nA,nB);
+	getch();
+}
+
+void cargarVector (int vec[], int n)
+{
+	int i=0;
+	while (i<n)
+	{
+		cout<<"Vec["<<i<<"]= ";
+		cin>>vec[i];
+		i++;
+	}
+	cout<<endl;
+}
+
+void mostrarVector (int vec[], int n)
+{
+	int i=0;
+	while (i<n)
+	{
+		cout<<vec[i]<<"\t";
+		i++;
+	}
+	cout<<endl;
+}
+
+void unirVectores (int A[], int B[], int nA, int nB)
+{
+	int i=0,j=0,k=0,C[MAX],nC;
+	nC=nA+nB;
+	while (k<nC)
+	{
+		if (i<nA)
+		{
+			
+				if (j<nB)
+				{
+					if (A[i]<B[j])
+					{
+						C[k]=A[i];
+						i++;
+					}
+					else
+					{
+						C[k]=B[j];
+						j++;
+					}
+
+				}
+				else
+				{
+					C[k]=A[i];
+					i++;
+				}
+				
+		}
+
+		else
+		{
+			if (j<nB)
+			{
+				C[k]=B[j];
+				j++;
+			}
+
+
+		}
+		k++;
+
+	}
+	cout<<"Vector C ordenado: "<<endl;
+	mostrarVector (C,nC);
+}
